@@ -1,12 +1,10 @@
-SELECT descCountry,
-       COUNT(DISTINCT idPlayer) AS qtPlayers, -- numero de players distintos
-       COUNT(DISTINCT descCountry) AS qtCountry,
-       AVG(DATE('now') - DATE(dtBirth)) AS idade,
-       SUM(flFacebook) AS totalFB,
-       SUM(flTwitter) AS totalTwitter,
-       SUM(flTwitch) AS totalTwitch,
-       COUNT(*) AS qtLinhas -- numero de linhas
-
+SELECT descCountry, 
+    count(distinct idPlayer) AS qtPlayers,
+    count(distinct descCountry) AS qtCountry,
+    ROUND(avg(date('now') - date(dtBirth)), 2) AS idade,
+    SUM(flTwitter) AS twitter,
+    SUM(flFacebook) AS facebook,
+    SUM(flTwitch) AS twitch
 FROM tb_players
 
 GROUP BY descCountry

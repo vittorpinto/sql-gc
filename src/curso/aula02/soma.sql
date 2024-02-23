@@ -1,5 +1,6 @@
-SELECT SUM(flFacebook) AS totalFB,
-       SUM(flTwitter) AS totalTwitter,
-       SUM(flTwitch) AS totalTwitch
+SELECT
+    SUM(flTwitter) AS twitter,
+    SUM(flFacebook) AS facebook,
+    SUM(flTwitch) AS twitch
 
 FROM tb_players
