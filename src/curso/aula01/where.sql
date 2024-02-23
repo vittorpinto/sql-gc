@@ -1,3 +1,5 @@
+-- puxando só id e data de nascimento de argentino
+
 SELECT idPlayer,
        dtBirth
 
