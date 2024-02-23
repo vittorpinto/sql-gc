@@ -1,2 +1,3 @@
+-- SELECT 'OLAMUNDO'
 SELECT *
 FROM tb_players
