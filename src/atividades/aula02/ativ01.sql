@@ -1,27 +1,12 @@
--- SELECT *
--- FROM(
---     SELECT idPlayer,
---             avg(flWinner) as partidasGanhas,
---             count(distinct idLobbyGame) as partidas
-
---     FROM tb_lobby_stats_player
-
---     GROUP BY idPlayer
--- )
--- WHERE partidas > 10
-
--- OR
-
-SELECT idPlayer, --primeiro seleciono
-        avg(flWinner) as partidasGanhas,
-        count(distinct idLobbyGame) as partidas
-
-FROM tb_lobby_stats_player --depois da onde tenho que selecionar
-
---where aqui se precisar, como um filtro
-
-GROUP BY idPlayer --agrupar
-
-HAVING partidas >= 10 --outro filtro, só que para o agrupamento
-
-ORDER BY partidasGanhas DESC --desc = maior para menor --agora eu ordeno
+-- colocar em ordem a pessoa com maior media de headshot
+SELECT idLobbyGame,
+    idPlayer,
+    qtKill,
+    qtHs,
+    avg(100.0*qtHs / qtKill) AS mediaGeral,
+    SUM(qtHs) AS headshotsTotal,
+    COUNT(distinct idLobbyGame) AS partidasJogadas
+FROM tb_lobby_stats_player
+GROUP BY idPlayer
+HAVING partidasJogadas>=20 AND qtKill>=1
+ORDER BY mediaGeral DESC

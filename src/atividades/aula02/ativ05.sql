@@ -5,5 +5,5 @@ SELECT DATE(dtCreatedAt),
     COUNT(DISTINCT idPlayer) AS dap
 FROM tb_lobby_stats_player
 GROUP BY DATE(dtCreatedAt)
-ORDER BY DATE(dtCreatedAt) -- or group by 1 order by 1
+ORDER BY COUNT(DISTINCT idPlayer) DESC -- or group by 1 order by 1
 LIMIT 100
